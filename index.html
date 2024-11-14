@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,39 +9,51 @@
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/0ed4d5c1f3.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
 
-<header>
-    <div class="header-overlay">
-        <h1>CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN, SIMPLES ET GÉNÉREUSES</h1>
-        <div class="search-container">
-            <input type="text" id="search-bar" placeholder="Recherchez une recette, un ingrédient, ...">
-            <button id="search-button"><i class="fa-solid fa-magnifying-glass" style="color: #333; font-size: 2.5rem;"></i></button>
+    <header>
+        <div class="header-overlay">
+            <h1>CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN, SIMPLES ET GÉNÉREUSES</h1>
+            <div class="search-container">
+                <input type="text" id="search-bar" placeholder="Recherchez une recette, un ingrédient, ...">
+                <button id="search-button"><i class="fa-solid fa-magnifying-glass"
+                        style="color: #333; font-size: 2.5rem;"></i></button>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
     <main>
-    <!-- Filters Section -->
-    <section class="filters">
-        <div class="filter">
-            <label for="ingredients-filter"></label>
-            <select id="ingredients-filter"><option value="">Ingrédients</option></select>
-        </div>
-        <div class="filter">
-            <label for="appliance-filter"></label>
-            <select id="appliance-filter"><option value="">Appareils</option></select>
-        </div>
-        <div class="filter">
-            <label for="ustensil-filter"></label>
-            <select id="ustensil-filter"><option value="">Ustensiles</option></select>
-        </div>
-    </section>
+        <!-- Filters Section -->
+        <section class="filters">
+            <div class="filter">
+                <label for="ingredients-filter"></label>
+                <select id="ingredients-filter">
+                    <option value="">Ingrédients</option>
+                </select>
+                <div id="ingredients-tags" class="tags"></div>
+            </div>
+            <div class="filter">
+                <label for="appliance-filter"></label>
+                <select id="appliance-filter">
+                    <option value="">Appareils</option>
+                </select>
+                <div id="appliance-tags" class="tags"></div>
+            </div>
+            <div class="filter">
+                <label for="ustensil-filter"></label>
+                <select id="ustensil-filter">
+                    <option value="">Ustensiles</option>
+                </select>
+                <div id="ustensil-tags" class="tags"></div>
+            </div>
+        </section>
 
-    <div id="search-results" class="result-message">50 recette(s) trouvée(s)</div>
-    <section id="recipe-list" class="recipe-list"></section>
-
+        <div id="search-results" class="result-message">50 recette(s) trouvée(s)</div>
+        <section id="recipe-list" class="recipe-list"></section>
     </main>
+
     <script src="scripts.js"></script>
 </body>
+
 </html>
