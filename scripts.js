@@ -34,4 +34,26 @@ function populateFilterOptions(elementId, items) {
     });
 }
 
+// Display recipes on the page
+function displayRecipes(recipeArray) {
+    const recipeList = document.getElementById('recipe-list');
+    recipeList.innerHTML = "";
+    recipeArray.forEach(recipe => {
+        const recipeCard = document.createElement('div');
+        recipeCard.classList.add('recipe-card');
+        recipeCard.innerHTML = `
+            <img src="images/${recipe.image}" alt="${recipe.name}">
+            <h3>${recipe.name}</h3>
+            <div class="recipe-details">
+                <h4 class="section-title">RECETTE</h4>
+                <p class="recipe-description">${recipe.description}</p>
+                <h4 class="section-title">INGRÉDIENTS</h4>
+                <div class="ingredients">
+                    ${recipe.ingredients.map(ingredients => `<div class="ingredient-item">${ingredients.ingredient}<br><span class="ingredient-quantity">${ingredients.quantity || ''} ${ingredients.unit || ''}</span></div>`).join('')}
+                </div>
+            </div>`;
+        recipeList.appendChild(recipeCard);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', loadRecipes);
