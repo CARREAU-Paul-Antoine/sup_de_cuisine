@@ -190,3 +190,6 @@ document.addEventListener('click', (event) => {
         });
     }
 });
+
+
+export { selectedFilters, addTag, applyFilters, populateFilterOptions };
