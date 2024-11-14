@@ -101,15 +101,23 @@ function displayRecipes(recipeArray) {
     });
 }
 
-// Event Listeners
-document.getElementById('search-bar').addEventListener('input', applyFilters);
+// Event Listeners (only if elements are found)
+const searchBar = document.getElementById('search-bar');
+if (searchBar) {
+    searchBar.addEventListener('input', applyFilters);
+}
 
 ['ingredients-filter', 'appliance-filter', 'ustensil-filter'].forEach(filterId => {
-    document.getElementById(filterId).addEventListener('change', event => {
-        const selectedValue = event.target.value;
-        if (selectedValue) addTag(filterId.split('-')[0], selectedValue);
-        event.target.value = "";
-    });
+    const filterElement = document.getElementById(filterId);
+    if (filterElement) {
+        filterElement.addEventListener('change', event => {
+            const selectedValue = event.target.value;
+            if (selectedValue) addTag(filterId.split('-')[0], selectedValue);
+            event.target.value = "";
+        });
+    }
 });
 
 document.addEventListener('DOMContentLoaded', loadRecipes);
+
+export { selectedFilters, addTag, removeTag, applyFilters, populateFilterOptions };
