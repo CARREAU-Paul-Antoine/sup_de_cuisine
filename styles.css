@@ -173,3 +173,11 @@ header h1 {
 .ingredient-quantity {
     color: #666;
 }
+
+/* Result Message */
+#search-results {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #666;
+    text-align: center;
+}
