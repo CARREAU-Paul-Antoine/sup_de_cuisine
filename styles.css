@@ -73,7 +73,6 @@ header h1 {
     justify-content: center;
 }
 
-
 /* Filters Styles */
 .filters {
     display: flex;
@@ -95,7 +94,6 @@ header h1 {
     border-radius: 5px;
     font-size: 0.8rem;
 }
-
 
 /* Recipe List Styles */
 .recipe-list {
