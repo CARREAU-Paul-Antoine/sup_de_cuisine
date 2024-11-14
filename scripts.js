@@ -87,7 +87,7 @@ function displayRecipes(recipeArray) {
         const recipeCard = document.createElement('div');
         recipeCard.classList.add('recipe-card');
         recipeCard.innerHTML = `
-            <img src="images/${recipe.image}" alt="${recipe.name}">
+            <img src="images/${recipe.image.replace(/\.\w+$/, '.webp')}" alt="${recipe.name}">
             <h3>${recipe.name}</h3>
             <div class="recipe-details">
                 <h4 class="section-title">RECETTE</h4>
