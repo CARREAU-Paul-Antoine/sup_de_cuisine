@@ -3,6 +3,8 @@ let uniqueIngredients = new Set(), uniqueAppliances = new Set(), uniqueUstensil 
 let selectedFilters = { ingredients: new Set(), appliance: new Set(), ustensil: new Set() };
 
 // Load recipes and populate filters
+document.addEventListener('DOMContentLoaded', loadRecipes);
+
 async function loadRecipes() {
     try {
         const response = await fetch('recettes.json');
@@ -14,25 +16,56 @@ async function loadRecipes() {
             recipe.ustensils.forEach(ut => uniqueUstensil.add(ut));
         });
 
-        populateFilterOptions('ingredients-filter', uniqueIngredients);
-        populateFilterOptions('appliance-filter', uniqueAppliances);
-        populateFilterOptions('ustensil-filter', uniqueUstensil);
+        populateFilterOptions('ingredients', uniqueIngredients);
+        populateFilterOptions('appliance', uniqueAppliances);
+        populateFilterOptions('ustensil', uniqueUstensil);
         displayRecipes(recipes);
     } catch (error) {
         console.error("Error loading recipes:", error);
     }
 }
 
-// Populate options in a dropdown
-function populateFilterOptions(elementId, items) {
-    const selectElement = document.getElementById(elementId);
+// Function to populate options without applying them as a filter
+function populateFilterOptions(type, items) {
+    const optionsContainer = document.getElementById(`${type}-options`);
+    
+    // Check if the options container exists
+    if (!optionsContainer) {
+        console.error(`Error: Element with id '${type}-options' not found.`);
+        return;
+    }
+
+    optionsContainer.innerHTML = ''; // Clear existing options
+
+    // Add each item as an option in the dropdown
     items.forEach(item => {
-        const option = document.createElement('option');
-        option.value = item;
+        const option = document.createElement('div');
+        option.className = 'filter-option';
         option.textContent = item;
-        selectElement.appendChild(option);
+
+        // Add the clicked option as a filter tag
+        option.addEventListener('click', () => {
+            addTag(type, item);
+            applyFilters(); // Reapply filters when an option is selected
+        });
+
+        optionsContainer.appendChild(option);
     });
 }
+
+// Event listener to filter displayed options based on input search, without applying the input as a filter
+document.querySelectorAll('.filter-input').forEach(input => {
+    input.addEventListener('input', event => {
+        const filterType = event.target.parentNode.parentNode.id.split('-')[0];
+        const searchQuery = event.target.value.toLowerCase();
+
+        const options = Array.from(document.getElementById(`${filterType}-options`).children);
+        options.forEach(option => {
+            // Show/hide options based on the search query
+            option.style.display = option.textContent.toLowerCase().includes(searchQuery) ? '' : 'none';
+        });
+    });
+});
 
 // Add or remove tags, update displayed recipes
 function addTag(type, value) {
@@ -66,17 +99,51 @@ function displayTags(type) {
 function applyFilters() {
     const query = document.getElementById('search-bar').value.toLowerCase();
 
+    // Filter recipes based on search query and selected tags
     const filteredRecipes = recipes.filter(recipe => {
-        const matchesSearch = query.length < 3 || recipe.name.toLowerCase().includes(query) || recipe.description.toLowerCase().includes(query) || recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(query));
-        const matchesIngredients = [...selectedFilters.ingredients].every(selected => recipe.ingredients.some(ing => ing.ingredient === selected));
-        const matchesAppliances = [...selectedFilters.appliance].every(selected => recipe.appliance === selected);
-        const matchesUstensil = [...selectedFilters.ustensil].every(selected => recipe.ustensils.includes(selected));
+        const matchesSearch = query.length < 3 || 
+            recipe.name.toLowerCase().includes(query) ||
+            recipe.description.toLowerCase().includes(query) ||
+            recipe.ingredients.some(ingredient => ingredient.ingredient.toLowerCase().includes(query));
+        const matchesIngredients = [...selectedFilters.ingredients].every(selected => 
+            recipe.ingredients.some(ing => ing.ingredient === selected));
+        const matchesAppliances = [...selectedFilters.appliance].every(selected => 
+            recipe.appliance === selected);
+        const matchesUstensil = [...selectedFilters.ustensil].every(selected => 
+            recipe.ustensils.includes(selected));
 
         return matchesSearch && matchesIngredients && matchesAppliances && matchesUstensil;
     });
 
+    // Update filter options based on filtered recipes
+    updateFilterOptions(filteredRecipes);
+
+    // Display filtered recipes
     displayRecipes(filteredRecipes);
-    document.getElementById('search-results').textContent = filteredRecipes.length === 0 ? (query.length >= 3 ? `Aucune recette ne convient à '${query}'` : "Aucune recette ne correspond aux critères") : `${filteredRecipes.length} recette(s) trouvée(s)`;
+
+    // Display the number of results or a no-result message
+    document.getElementById('search-results').textContent = filteredRecipes.length === 0 
+        ? (query.length >= 3 ? `Aucune recette ne convient à '${query}'` : "Aucune recette ne correspond aux critères") 
+        : `${filteredRecipes.length} recette(s) trouvée(s)`;
+}
+
+// Function to update filter options based on remaining recipes
+function updateFilterOptions(filteredRecipes) {
+    const remainingIngredients = new Set();
+    const remainingAppliances = new Set();
+    const remainingUstensils = new Set();
+
+    // Calculate unique items for each filter from the filtered recipes
+    filteredRecipes.forEach(recipe => {
+        recipe.ingredients.forEach(ingredient => remainingIngredients.add(ingredient.ingredient));
+        remainingAppliances.add(recipe.appliance);
+        recipe.ustensils.forEach(utensil => remainingUstensils.add(utensil));
+    });
+
+    // Update each filter dropdown with the remaining items
+    populateFilterOptions('ingredients', remainingIngredients);
+    populateFilterOptions('appliance', remainingAppliances);
+    populateFilterOptions('ustensil', remainingUstensils);
 }
 
 // Display recipes on the page
@@ -107,17 +174,19 @@ if (searchBar) {
     searchBar.addEventListener('input', applyFilters);
 }
 
-['ingredients-filter', 'appliance-filter', 'ustensil-filter'].forEach(filterId => {
-    const filterElement = document.getElementById(filterId);
-    if (filterElement) {
-        filterElement.addEventListener('change', event => {
-            const selectedValue = event.target.value;
-            if (selectedValue) addTag(filterId.split('-')[0], selectedValue);
-            event.target.value = "";
+// Toggle dropdown visibility on header click
+document.querySelectorAll('.filter-header').forEach(header => {
+    header.addEventListener('click', (event) => {
+        const dropdown = event.target.nextElementSibling;
+        dropdown.classList.toggle('open'); // Toggle the 'open' class
+    });
+});
+
+// Close dropdown when clicking outside
+document.addEventListener('click', (event) => {
+    if (!event.target.closest('.filter-container')) {
+        document.querySelectorAll('.filter-dropdown').forEach(dropdown => {
+            dropdown.classList.remove('open');
         });
     }
 });
-
-document.addEventListener('DOMContentLoaded', loadRecipes);
-
-export { selectedFilters, addTag, removeTag, applyFilters, populateFilterOptions };

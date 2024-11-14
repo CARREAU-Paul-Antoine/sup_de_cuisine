@@ -73,6 +73,7 @@ header h1 {
     justify-content: center;
 }
 
+
 /* Filters Styles */
 .filters {
     display: flex;
@@ -88,11 +89,59 @@ header h1 {
     width: 200px;
 }
 
-.filter select {
-    padding: 5px 15px;
+/* Filter Container */
+.filter-container {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+}
+
+.filter-header {
+    padding: 5px;
+    font-size: 0.9rem;
     border: 1px solid #ddd;
     border-radius: 5px;
-    font-size: 0.8rem;
+    background-color: #fff;
+}
+
+.filter-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    z-index: 100;
+}
+
+.filter-dropdown.open {
+    display: block;
+}
+
+.filter-input {
+    width: 100%;
+    padding: 5px;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ddd;
+}
+
+.filter-options {
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.filter-option {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.filter-option:hover {
+    background-color: #f0f0f0;
 }
 
 /* Recipe List Styles */

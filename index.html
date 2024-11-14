@@ -24,27 +24,40 @@
     </header>
 
     <main>
-        <!-- Filters Section -->
         <section class="filters">
+            <!-- Ingredients Filter -->
             <div class="filter">
-                <label for="ingredients-filter"></label>
-                <select id="ingredients-filter">
-                    <option value="">Ingrédients</option>
-                </select>
+                <div id="ingredients-filter" class="filter-container">
+                    <div class="filter-header">Ingrédients</div>
+                    <div class="filter-dropdown">
+                        <input type="text" placeholder="Rechercher un ingrédient..." class="filter-input" />
+                        <div class="filter-options" id="ingredients-options"></div>
+                    </div>
+                </div>
                 <div id="ingredients-tags" class="tags"></div>
             </div>
+        
+            <!-- Appliances Filter -->
             <div class="filter">
-                <label for="appliance-filter"></label>
-                <select id="appliance-filter">
-                    <option value="">Appareils</option>
-                </select>
+                <div id="appliance-filter" class="filter-container">
+                    <div class="filter-header">Appareils</div>
+                    <div class="filter-dropdown">
+                        <input type="text" placeholder="Rechercher un appareil..." class="filter-input" />
+                        <div class="filter-options" id="appliance-options"></div>
+                    </div>
+                </div>
                 <div id="appliance-tags" class="tags"></div>
             </div>
+        
+            <!-- Utensils Filter -->
             <div class="filter">
-                <label for="ustensil-filter"></label>
-                <select id="ustensil-filter">
-                    <option value="">Ustensiles</option>
-                </select>
+                <div id="ustensil-filter" class="filter-container">
+                    <div class="filter-header">Ustensiles</div>
+                    <div class="filter-dropdown">
+                        <input type="text" placeholder="Rechercher un ustensile..." class="filter-input" />
+                        <div class="filter-options" id="ustensil-options"></div>
+                    </div>
+                </div>
                 <div id="ustensil-tags" class="tags"></div>
             </div>
         </section>
