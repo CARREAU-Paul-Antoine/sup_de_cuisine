@@ -17,7 +17,7 @@
             {
                 "ingredient": "Crème de coco",
                 "quantity": 2,
-                "unit": "cuillère à soupe"
+                "unit": "cuillères à soupe"
             },
             {
                 "ingredient": "Sucre",
@@ -108,7 +108,7 @@
             {
                 "ingredient": "Huile d'olive",
                 "quantity": 1,
-                "unit": "cuillère à soupe"
+                "unit": "cuillères à soupe"
             }
         ],
         "name": "Poulet coco réunionnais",
@@ -183,7 +183,7 @@
             {
                 "ingredient": "Crème fraîche",
                 "quantity": 2,
-                "unit": "cuillère à soupe"
+                "unit": "cuillères à soupe"
             },
             {
                 "ingredient": "gruyère râpé",
@@ -193,7 +193,7 @@
             {
                 "ingredient": "Moutarde de Dijon",
                 "quantity": 1,
-                "unite": "cuillère à soupe"
+                "unite": "cuillères à soupe"
             }
         ],
         "name": "Tarte au thon",
@@ -668,7 +668,7 @@
             {
                 "ingredient": "Jus de citron",
                 "quantity": 1,
-                "unit": "cuillère à soupe"
+                "unit": "cuillères à soupe"
             },
             {
                 "ingredient": "Glaçons",
@@ -783,7 +783,7 @@
             {
                 "ingredient": "Huile d'olive",
                 "quantity": 1,
-                "unit": "cuillère à soupe"
+                "unit": "cuillères à soupe"
             }
         ],
         "name": "Pates Carbonara",
@@ -827,7 +827,7 @@
             {
                 "ingredient": "Crème fraîche",
                 "quantity": 1,
-                "unit": "cuillère à soupe"
+                "unit": "cuillères à soupe"
             }
         ],
         "name": "Spaghettis à la bolognaise",
@@ -956,7 +956,7 @@
             {
                 "ingredient": "Mayonnaise",
                 "quantity": 2,
-                "unit": "cuillère à soupe"
+                "unit": "cuillères à soupe"
             }
         ],
         "name": "Salade de pâtes",
@@ -1290,12 +1290,12 @@
             {
                 "ingredient": "Fromage blanc",
                 "quantity": 4,
-                "unit": "cuillère à soupe"
+                "unit": "cuillères à soupe"
             },
             {
                 "ingredient": "Jus de citron",
                 "quantity": 1,
-                "unit": "cuillère à soupe"
+                "unit": "cuillères à soupe"
             }
         ],
         "name": "Sandwich au saumon fumé",
@@ -1361,12 +1361,12 @@
             {
                 "ingredient": "Crème fraîche",
                 "quantity": 2,
-                "unit": "cuillère à soupe"
+                "unit": "cuillères à soupe"
             },
             {
                 "ingredient": "Cumin",
                 "quantity": 1,
-                "unit": "cuillère à café"
+                "unit": "cuillères à café"
             },
             {
                 "ingredient": "Noix de muscade",
@@ -1415,7 +1415,7 @@
             {
                 "ingredient": "Maïzena",
                 "quantity": 1,
-                "unit": "cuillère à soupe"
+                "unit": "cuillères à soupe"
             }
         ],
         "name": "Lasagne Courgettes et Chèvre",
@@ -1559,12 +1559,12 @@
             {
                 "ingredient": "Sucre en poudre",
                 "quantity": 4,
-                "unit": "cuillère à café"
+                "unit": "cuillères à café"
             },
             {
                 "ingredient": "Bicarbonate",
                 "quantity": 1,
-                "unit": "cuillère à café"
+                "unit": "cuillères à café"
             }
         ],
         "name": "Limonade",
@@ -1896,7 +1896,7 @@
             {
                 "ingredient": "Miel",
                 "quantity": 2,
-                "unit": "cuillère à soupe"
+                "unit": "cuillères à soupe"
             }
         ],
         "name": "Smoothie tropical",
