@@ -207,3 +207,23 @@ header h1 {
     color: #666;
     text-align: center;
 }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .filter {
+        width: 100%;
+    }
+
+    .search-container {
+        width: 100%;
+        max-width: none;
+    }
+}
